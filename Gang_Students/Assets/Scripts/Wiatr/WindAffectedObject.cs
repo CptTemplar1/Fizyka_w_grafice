@@ -12,19 +12,21 @@ public class WindAffectedObject : MonoBehaviour
     private List<Rigidbody> rbList = new List<Rigidbody>();
 
     /// <summary>
-    /// Metoda przeszukuje wszystkie dzieci g³ównego rodzica i pobieramy ich komponenty Rigidbody do listy
+    /// Dodaje komponent RigidBody obiektu (jeœli istnieje) do listy, a nastepnie wywo³uje metodê przeszukuj¹c¹ dzieci
     /// </summary>
     private void Start()
     {
-        // Najpierw sprawdzamy, czy rodzic posiada komponent Rigidbody
-        Rigidbody parentRb = GetComponentInParent<Rigidbody>();
-        if (parentRb != null)
+        // Najpierw sprawdzamy, czy obiekt posiada komponent Rigidbody
+        Rigidbody rb = GetComponent<Rigidbody>();
+        if (rb != null)
         {
-            rbList.Add(parentRb);
+            rbList.Add(rb);
         }
 
         // Nastêpnie przeszukujemy dzieci
         SearchForRigidbodies(transform);
+
+        Debug.Log("Iloœæ RigidBody w ciele playera = " + rbList.Count);
     }
 
     /// <summary>
@@ -73,7 +75,6 @@ public class WindAffectedObject : MonoBehaviour
             windArea = other.gameObject;
             inWindZone = true;
         }
-        print(rbList.Count);
     }
 
     /// <summary>
