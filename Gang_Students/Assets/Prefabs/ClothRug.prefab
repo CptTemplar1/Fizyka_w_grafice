@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 7797801196735395572}
   - component: {fileID: 7797801196735395573}
   - component: {fileID: 7797801196735395570}
+  - component: {fileID: 2003086397}
   m_Layer: 0
   m_Name: ClothRug
   m_TagString: Untagged
@@ -353,7 +354,11 @@ Cloth:
   - maxDistance: 0
     collisionSphereDistance: 3.4028235e+38
   m_CapsuleColliders: []
-  m_SphereColliders: []
+  m_SphereColliders:
+  - first: {fileID: 0}
+    second: {fileID: 0}
+  - first: {fileID: 0}
+    second: {fileID: 0}
   m_SelfCollisionDistance: 0
   m_SelfCollisionStiffness: 0.2
   m_SelfAndInterCollisionIndices: 
@@ -362,3 +367,18 @@ Cloth:
   - {x: 0.6666667, y: 0.16666667, z: 0.16666667}
   - {x: 0.5, y: 0.5, z: 0}
   m_VirtualParticleIndices: 
+--- !u!114 &2003086397
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7797801196735395571}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a9197dad3d98c904c9af6374f5ebb39d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerRagdoll: {fileID: 0}
+  additionalCapsuleColliders: []
+  additionalSphereColliders: []
