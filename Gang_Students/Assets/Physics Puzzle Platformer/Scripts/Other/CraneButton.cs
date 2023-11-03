@@ -1,16 +1,7 @@
-//----------------------------
-//---Physics Puzzle Platformer
-//---© TFM™
-//-------------------
-
-
 using UnityEngine;
 
 public class CraneButton : MonoBehaviour
-{
-    //Exposed Variables
-    ///////////////////
-    
+{   
     [SerializeField]
     private Animator blueContainer;
     
@@ -19,8 +10,6 @@ public class CraneButton : MonoBehaviour
     
     [SerializeField]
     private AudioSource audioSource;
-    
-    //----------------------------------------
     
     void OnTriggerEnter(Collider other)
     {

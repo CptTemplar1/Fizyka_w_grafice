@@ -1,31 +1,16 @@
-//----------------------------
-//---Physics Puzzle Platformer
-//---© TFM™
-//-------------------
-
-
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class Navigation : MonoBehaviour
-{
-    //Exposed Variables
-    ///////////////////
-    
+{   
     [SerializeField]
     private GameObject menu, about;
-    
-    
-    
-    //-------------------------------------
-    
     
     void Start()
     {
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
     }
-    
     
     public void showMenu()
     {

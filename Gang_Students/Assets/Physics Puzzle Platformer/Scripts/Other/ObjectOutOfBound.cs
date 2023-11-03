@@ -1,29 +1,15 @@
-﻿//----------------------------
-//---Physics Puzzle Platformer
-//---© TFM™
-//-------------------
-
-using UnityEngine;
+﻿using UnityEngine;
 
 
 public class ObjectOutOfBound : MonoBehaviour
 {
-    //Exposed Variables
-    ///////////////////
-    
     [SerializeField]
     private Transform objResetPoint;
     
     [SerializeField]
     private HandController rightHandController, leftHandController;
     
-    //Hidden Variables
-    //////////////////
-    
     Rigidbody rb;
-
-
-    //-----------------------------------------
     
     
     void OnTriggerEnter(Collider col)

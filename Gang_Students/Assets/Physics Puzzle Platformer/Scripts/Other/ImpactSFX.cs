@@ -1,9 +1,3 @@
-//----------------------------
-//---Physics Puzzle Platformer
-//---© TFM™
-//-------------------
-
-
 using UnityEngine;
 
 public class ImpactSFX : MonoBehaviour
@@ -15,8 +9,6 @@ public class ImpactSFX : MonoBehaviour
     private AudioClip[] clips;
     
     AudioClip chosenClip;
-    
-    //----------------------------------------
     
     void OnCollisionEnter(Collision col)
     {

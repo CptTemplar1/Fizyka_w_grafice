@@ -1,20 +1,9 @@
-//----------------------------
-//---Physics Puzzle Platformer
-//---© TFM™
-//-------------------
-
-
 using UnityEngine;
 
 public class EndTrigger : MonoBehaviour
-{
-    //Exposed Variables
-    ///////////////////
-    
+{    
     [SerializeField]
     public bool reachedTheEnd;
-    
-    //----------------------------------------
     
     void OnTriggerEnter(Collider other)
     {

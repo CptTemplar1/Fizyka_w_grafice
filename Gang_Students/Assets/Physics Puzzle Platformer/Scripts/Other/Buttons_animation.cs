@@ -1,18 +1,9 @@
-//----------------------------
-//---Physics Puzzle Platformer
-//---© TFM™
-//-------------------
-
-
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
 
 public class Buttons_animation : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IPointerClickHandler
-{
-    //Exposed Variables
-    ///////////////////
-    
+{   
     [SerializeField]
     private Sprite normal, hover;
     
@@ -31,16 +22,8 @@ public class Buttons_animation : MonoBehaviour, IPointerEnterHandler, IPointerEx
     [SerializeField]
     private AudioClip hoverSound, popSound;
     
-    
-    //Hidden Variables
-    //////////////////
-    
     private int animLayer = 0;
 
-    
-    //---------------------------------------------
-    
-    
     public void OnPointerEnter(PointerEventData eventData)
     {
         sourceImg.sprite = hover;

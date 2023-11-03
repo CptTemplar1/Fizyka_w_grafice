@@ -1,101 +1,137 @@
 ﻿using System.Collections;
 using UnityEngine;
 
+/// <summary>
+/// Klasa odpowiedzialna za obsługę wykrywania gracza poza obszarem gry.
+/// </summary>
 public class PlayerOutOfBounds : MonoBehaviour
-{   
+{
+    /// <summary>
+    /// Referencja do obiektu PlayerController.
+    /// </summary>
     [SerializeField]
     private PlayerController playerController;
-    
+
+    /// <summary>
+    /// Referencja do obiektu ragdolla gracza.
+    /// </summary>
     [SerializeField]
     private GameObject ragdollPlayer;
-    
+
+    /// <summary>
+    /// Referencja do korzenia ragdolla gracza.
+    /// </summary>
     [SerializeField]
     private GameObject ragdollRoot;
-    
+
+    /// <summary>
+    /// Referencja do kontrolera prawej ręki.
+    /// </summary>
     [SerializeField]
-    private HandController rightHandController, leftHandController;
-    
+    private HandController rightHandController;
+
+    /// <summary>
+    /// Referencja do kontrolera lewej ręki.
+    /// </summary>
+    [SerializeField]
+    private HandController leftHandController;
+
+    /// <summary>
+    /// Punkt resetowania pozycji gracza.
+    /// </summary>
     [SerializeField]
     private Transform resetPoint;
-    
+
+    /// <summary>
+    /// Określa, czy kamera ma być natychmiastowo zaktualizowana.
+    /// </summary>
     [SerializeField]
     private bool instantCameraUpdate = false;
-    
+
     Camera cam;
     bool checkedTrigger;
     Rigidbody[] ragdollParts;
     Vector3 storedVelocity;
-    
-    
+
     void Awake()
     {
         cam = Camera.main;
     }
-    
+
+    /// <summary>
+    /// Metoda wywoływana, gdy obiekt wchodzi w obszar wykrywania.
+    /// </summary>
+    /// <param name="col">Obiekt Collider reprezentujący kolizję.</param>
     void OnTriggerEnter(Collider col)
     {
-        if(!checkedTrigger)
+        if (!checkedTrigger)
         {
-            if(col.gameObject.layer == LayerMask.NameToLayer("Player") || col.gameObject.layer == LayerMask.NameToLayer("Ragdoll"))
+            if (col.gameObject.layer == LayerMask.NameToLayer("Player") || col.gameObject.layer == LayerMask.NameToLayer("Ragdoll"))
             {
                 checkedTrigger = true;
-                
+
+                // Wyłącz kontrolę gracza
                 playerController.useControls = false;
-                
-                if(rightHandController.gameObject.GetComponent<FixedJoint>())
+
+                // Obsługa prawej ręki
+                if (rightHandController.gameObject.GetComponent<FixedJoint>())
                 {
                     rightHandController.gameObject.SetActive(false);
                     rightHandController.gameObject.GetComponent<FixedJoint>().breakForce = 0;
                     rightHandController.GrabbedObject = null;
                     rightHandController.hasJoint = false;
                 }
-                
-                if(leftHandController.gameObject.GetComponent<FixedJoint>())
+
+                // Obsługa lewej ręki
+                if (leftHandController.gameObject.GetComponent<FixedJoint>())
                 {
                     leftHandController.gameObject.SetActive(false);
                     leftHandController.gameObject.GetComponent<FixedJoint>().breakForce = 0;
                     leftHandController.GrabbedObject = null;
                     leftHandController.hasJoint = false;
                 }
-                
-                if(ragdollPlayer != null)
+
+                if (ragdollPlayer != null)
                 {
                     ragdollParts = ragdollPlayer.GetComponentsInChildren<Rigidbody>();
-                    
-                    //Deactivate physics and store velocity
+
+                    // Deaktywacja fizyki i przechowanie prędkości
                     foreach (Rigidbody physics in ragdollParts)
                     {
                         storedVelocity = physics.velocity;
                         physics.isKinematic = true;
                     }
-                    
-                    //Record camera current offset
+
+                    // Zapisanie aktualnego przesunięcia kamery
                     var cameraOffset = new Vector3(cam.transform.position.x - ragdollRoot.transform.position.x, cam.transform.position.y - ragdollRoot.transform.position.y, cam.transform.position.z - ragdollRoot.transform.position.z);
-                    
-                    
-                    //Set player to new position
+
+                    // Ustawienie gracza na nową pozycję
                     ragdollRoot.transform.localPosition = Vector3.zero;
                     ragdollPlayer.transform.position = resetPoint.position;
-                    
-                    //Re-activate physics and apply stored velocity
+
+                    // Ponowne aktywowanie fizyki i zastosowanie przechowanej prędkości
                     foreach (Rigidbody physics in ragdollParts)
                     {
                         physics.isKinematic = false;
                         physics.velocity = storedVelocity;
                     }
-                    
-                    
-                    //Apply camera offset to new position
-                    if(instantCameraUpdate)
+
+                    // Zastosowanie przesunięcia kamery do nowej pozycji
+                    if (instantCameraUpdate)
                     {
                         cam.transform.position = ragdollRoot.transform.position + cameraOffset;
                     }
                 }
-                
+
                 checkedTrigger = false;
+
+                // Włącz kontrolę gracza ponownie
                 playerController.useControls = true;
-                
+
+                // Włącz obiekt kontrolera prawej ręki
                 rightHandController.gameObject.SetActive(true);
+
+                // Włącz obiekt kontrolera lewej ręki
                 leftHandController.gameObject.SetActive(true);
             }
         }

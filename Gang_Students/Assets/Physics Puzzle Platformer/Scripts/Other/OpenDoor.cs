@@ -1,16 +1,7 @@
-//----------------------------
-//---Physics Puzzle Platformer
-//---© TFM™
-//-------------------
-
-
 using UnityEngine;
 
 public class OpenDoor : MonoBehaviour
 {
-    //Exposed Variables
-    ///////////////////
-    
     [SerializeField]
     private BlockTrigger trigger1, trigger2, trigger3;
     
@@ -20,13 +11,7 @@ public class OpenDoor : MonoBehaviour
     [SerializeField]
     private AudioSource audioSource;
     
-    
-    //Hidden Variables
-    ///////////////////
-    
     bool opened;
-    
-    //-----------------------------------------
     
     void Update()
     {

@@ -1,21 +1,9 @@
-//----------------------------
-//---Physics Puzzle Platformer
-//---© TFM™
-//-------------------
-
-
 using UnityEngine;
 
 public class BlockTrigger : MonoBehaviour
 {
-    //Exposed Variables
-    ///////////////////
-    
     [SerializeField]
     private int triggerNumber;
-    
-    //Hidden Variables
-    ///////////////////
     
     [HideInInspector]
     public bool block1, block2, block3;

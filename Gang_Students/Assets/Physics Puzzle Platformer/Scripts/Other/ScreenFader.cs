@@ -1,24 +1,13 @@
-//----------------------------
-//---Physics Puzzle Platformer
-//---© TFM™
-//-------------------
-
-
 using UnityEngine;
 using UnityEngine.UI;
 
 public class ScreenFader : MonoBehaviour
-{
-    //Exposed Variables
-    ///////////////////
-    
+{    
     [SerializeField]
     private Image fader;
     
     [SerializeField]
     private float fadeSpeed;
-    
-    //-----------------------------------------
     
     void Update()
     {

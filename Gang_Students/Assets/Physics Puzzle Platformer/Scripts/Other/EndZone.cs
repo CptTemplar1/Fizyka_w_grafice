@@ -1,18 +1,9 @@
-//----------------------------
-//---Physics Puzzle Platformer
-//---© TFM™
-//-------------------
-
-
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class EndZone : MonoBehaviour
 {
-    //Exposed Variables
-    ///////////////////
-    
     [SerializeField]
     public EndTrigger endTrigger;
     
@@ -22,13 +13,7 @@ public class EndZone : MonoBehaviour
     [SerializeField]
     private float fadeSpeed;
     
-    
-    //Hidden Variables
-    //////////////////
-    
     bool initiatedLoad, startFade;
-    
-    //----------------------------------------
     
     void OnTriggerEnter(Collider other)
     {
