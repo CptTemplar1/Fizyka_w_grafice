@@ -1394,7 +1394,7 @@ GameObject:
   - component: {fileID: 3075151287930043993}
   - component: {fileID: 3075151287930043992}
   m_Layer: 8
-  m_Name: Chicken_Ragdoll
+  m_Name: Ragdoll
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2764,7 +2764,7 @@ SkinnedMeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 993604467994b254fad2d52e2f8ab100, type: 2}
+  - {fileID: 2100000, guid: 79587cb750abc294c808c7f6b93bfc2c, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -3839,7 +3839,7 @@ SkinnedMeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 91bfc0dd013c5d6438dd885c94322fa3, type: 2}
+  - {fileID: 2100000, guid: 805a2bfd5a41eec4e8d6d184084e81f0, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -3899,7 +3899,7 @@ GameObject:
   - component: {fileID: 3075151289078969697}
   - component: {fileID: 3075151289078969710}
   m_Layer: 8
-  m_Name: Chicken_Animator
+  m_Name: Animator
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
