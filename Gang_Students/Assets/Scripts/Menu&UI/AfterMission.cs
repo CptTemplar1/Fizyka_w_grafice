@@ -12,6 +12,15 @@ public class AfterMission : MonoBehaviour
 
     public GameObject afterSuccessfulMissionUI; // schowany obiekt z interfejsem Menu, który jest pokazywany po wygranym poziomie
 
+    //Metoda koñcz¹ca grê po wejœciu obiektu z tagiem "Player" w pole wykrywania Collidera
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.CompareTag("Player"))
+        {
+            FinishLevel();
+        }
+    }
+
     // metoda pauzuj¹ca grê i w³¹czaj¹ca panel wygranej
     public void FinishLevel()
     {
@@ -19,6 +28,10 @@ public class AfterMission : MonoBehaviour
 
         Time.timeScale = 0f;
         GameIsPaused = true;
+
+        // W³¹cz kursor
+        Cursor.visible = true;
+        Cursor.lockState = CursorLockMode.None;
     }
 
     // metoda wychodz¹ca z gry do Menu g³ównego
