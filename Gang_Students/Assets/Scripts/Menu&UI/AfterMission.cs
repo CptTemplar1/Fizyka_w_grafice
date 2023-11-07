@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using TMPro;
 
 public class AfterMission : MonoBehaviour
 {
@@ -11,15 +12,6 @@ public class AfterMission : MonoBehaviour
     public static bool GameIsPaused = false; // flaga okreœlaj¹ca czy gra jest zapauzowana
 
     public GameObject afterSuccessfulMissionUI; // schowany obiekt z interfejsem Menu, który jest pokazywany po wygranym poziomie
-
-    //Metoda koñcz¹ca grê po wejœciu obiektu z tagiem "Player" w pole wykrywania Collidera
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other.gameObject.CompareTag("Player"))
-        {
-            FinishLevel();
-        }
-    }
 
     // metoda pauzuj¹ca grê i w³¹czaj¹ca panel wygranej
     public void FinishLevel()
