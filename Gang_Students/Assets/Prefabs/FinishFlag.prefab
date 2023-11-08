@@ -512,7 +512,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerRagdoll: {fileID: 0}
-  additionalCapsuleColliders: []
+  additionalCapsuleColliders:
+  - {fileID: 7900769794674843567}
+  - {fileID: 5796503087482237849}
   additionalSphereColliders: []
 --- !u!1 &7077317609413934540
 GameObject:

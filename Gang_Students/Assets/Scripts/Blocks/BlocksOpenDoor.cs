@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class OpenDoor : MonoBehaviour
+public class BlocksOpenDoor : MonoBehaviour
 {
     [SerializeField]
     private BlockTrigger trigger1, trigger2, trigger3;
