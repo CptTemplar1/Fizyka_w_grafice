@@ -52,7 +52,7 @@ GameObject:
   - component: {fileID: 7009901537490718930}
   m_Layer: 0
   m_Name: Ramp (10)
-  m_TagString: Untagged
+  m_TagString: CanBeGrabbed
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -65,7 +65,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3192837593028511735}
   m_LocalRotation: {x: -0, y: 0.7071068, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: 1.1960121, y: 0.676, z: 3.34}
+  m_LocalPosition: {x: 1.1960121, y: 0.24399999, z: 3.34}
   m_LocalScale: {x: 5.3820744, y: 0.70300996, z: 0.19714005}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -149,7 +149,7 @@ GameObject:
   - component: {fileID: 1525016515052420322}
   m_Layer: 0
   m_Name: Ramp (7)
-  m_TagString: Untagged
+  m_TagString: CanBeGrabbed
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -162,7 +162,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4157095502223916502}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.08299866, y: 0.676, z: 0.7903999}
+  m_LocalPosition: {x: -0.08299866, y: 0.24399999, z: 0.7903999}
   m_LocalScale: {x: 2.77223, y: 0.70300996, z: 0.39764884}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -259,8 +259,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5944346578693908188}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.68, y: 2.4069214, z: 1.1915417}
-  m_LocalScale: {x: 0.22529006, y: 4.88907, z: 0.15629005}
+  m_LocalPosition: {x: 1.68, y: 2.2732, z: 1.1915417}
+  m_LocalScale: {x: 0.22529006, y: 5.1565022, z: 0.15629005}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1762792309430998517}
@@ -343,7 +343,7 @@ GameObject:
   - component: {fileID: 8305431395807096367}
   m_Layer: 0
   m_Name: Ramp (9)
-  m_TagString: Untagged
+  m_TagString: CanBeGrabbed
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -356,7 +356,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7129618937326883408}
   m_LocalRotation: {x: -0, y: 0.7071068, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: -1.3699974, y: 0.676, z: 3.34}
+  m_LocalPosition: {x: -1.3699974, y: 0.24399999, z: 3.34}
   m_LocalScale: {x: 5.3820744, y: 0.70300996, z: 0.19714005}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -440,7 +440,7 @@ GameObject:
   - component: {fileID: 9010268259312714987}
   m_Layer: 0
   m_Name: Ramp (6)
-  m_TagString: Untagged
+  m_TagString: CanBeGrabbed
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -453,7 +453,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7764821458738580840}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.08299485, y: 0.142, z: 3.3278}
+  m_LocalPosition: {x: -0.08299485, y: -0.29, z: 3.3278}
   m_LocalScale: {x: 2.77223, y: 0.46585, z: 5.496365}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -537,7 +537,7 @@ GameObject:
   - component: {fileID: 4521145102578509009}
   m_Layer: 0
   m_Name: Ramp (8)
-  m_TagString: Untagged
+  m_TagString: CanBeGrabbed
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -550,7 +550,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8001179011119347084}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.08299485, y: 0.676, z: 5.8733997}
+  m_LocalPosition: {x: -0.08299485, y: 0.24399999, z: 5.8733997}
   m_LocalScale: {x: 2.77223, y: 0.70300996, z: 0.39764884}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -647,8 +647,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8667153427506977939}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.8, y: 2.41, z: 1.2}
-  m_LocalScale: {x: 0.22529006, y: 4.88907, z: 0.15629005}
+  m_LocalPosition: {x: -1.8, y: 2.3082, z: 1.2}
+  m_LocalScale: {x: 0.22529006, y: 5.0924554, z: 0.15629005}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1762792309430998517}

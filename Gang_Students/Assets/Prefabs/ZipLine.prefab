@@ -501,7 +501,7 @@ GameObject:
   - component: {fileID: 1332429612172963473}
   m_Layer: 7
   m_Name: ZipLine
-  m_TagString: CanBeGrabbed
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

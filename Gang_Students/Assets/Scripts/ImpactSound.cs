@@ -1,0 +1,22 @@
+using UnityEngine;
+
+public class ImpactSound : MonoBehaviour
+{
+    [SerializeField]
+    private AudioSource audioSource;
+    
+    [SerializeField]
+    private AudioClip[] clips;
+    
+    AudioClip chosenClip;
+    
+    void OnCollisionEnter(Collision col)
+    {
+        if(!audioSource.isPlaying && col.gameObject.layer == LayerMask.NameToLayer("World"))
+        {
+            chosenClip = clips[Random.Range(0, clips.Length)];
+            audioSource.clip = chosenClip;
+            audioSource.Play();
+        }
+    }
+}
