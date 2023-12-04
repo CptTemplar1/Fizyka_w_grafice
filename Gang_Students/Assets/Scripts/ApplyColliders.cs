@@ -2,6 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// Klasa odpowiedzialna za collidery obiektów.
+/// </summary>
 public class ApplyColliders : MonoBehaviour
 {
     /// Obiekt ragdolla gracza, z którego pobieramy collidery

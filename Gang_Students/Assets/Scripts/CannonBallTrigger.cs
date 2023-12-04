@@ -1,16 +1,24 @@
 using UnityEngine;
 
+/// <summary>
+/// Wykrywa wejœcie gracza w okreœlony obszar i wystrzeliwuje w jego kierunku kule armatnie.
+/// </summary>
 public class CannonBallTrigger : MonoBehaviour
 {
-    public GameObject cannonBallPrefab; // Prefab cannonBall, który chcesz zespawniæ
-    public GameObject player; // Gracz, do którego zostanie skierowana kula
-    public float cannonBallForce = 1000f; // Si³a, z jak¹ zostanie wystrzelona kula
-    public Transform cannonBallSpawnPoint; // Miejsce spawnu pocisku
-    public AudioSource cannonExplosion; //Ÿród³o dŸwiêku wystrza³u z armaty
-    public GameObject explosionParticles; //ParticleSystem z wybuchem 
-    
-    private bool wasFired; //flaga zapobiegaj¹ca strzeleniu kilka razy
+    public GameObject cannonBallPrefab; ///< Prefab kuli armatniej do wystrzelenia.
+    public GameObject player; ///< Gracz, w kierunku którego zostanie wystrzelona kula.
+    public float cannonBallForce; ///< Si³a, z jak¹ kula zostanie wystrzelona.
+    public Transform cannonBallSpawnPoint; ///< Miejsce, gdzie kula zostanie zespawnowana.
+    public AudioSource cannonExplosion; ///< ród³o dŸwiêku wystrza³u z armaty.
+    public GameObject explosionParticles; ///< System cz¹steczkowy dla efektów wybuchu.
 
+    private bool wasFired; ///< Flaga zapobiegaj¹ca wielokrotnemu wystrzeleniu kuli.
+
+    /// <summary>
+    /// Wywo³ywana, gdy obiekt wchodzi w pole Collidera.
+    /// Wystrzeliwuje kule armatni¹ w kierunku gracza, jeœli warunki s¹ spe³nione.
+    /// </summary>
+    /// <param name="other">Collider innego obiektu.</param>
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.CompareTag("Player") && !wasFired)
@@ -20,6 +28,9 @@ public class CannonBallTrigger : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Tworzy i wystrzeliwuje kule armatni¹ w kierunku gracza.
+    /// </summary>
     void SpawnCannonBall()
     {
         //odegranie dŸwiêku wystzra³u armaty

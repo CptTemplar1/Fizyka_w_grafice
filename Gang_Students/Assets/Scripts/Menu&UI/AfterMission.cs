@@ -5,15 +5,25 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using TMPro;
 
+/// <summary>
+/// Zarz¹dza zachowaniami po zakoñczeniu gry, takimi jak pauzowanie gry i wyœwietlanie interfejsu u¿ytkownika.
+/// </summary>
+/// <remarks>
+/// Klasa odpowiada za obs³ugê interfejsu po zakoñczeniu gry. Umo¿liwia pauzowanie gry i wyœwietlanie panelu
+/// po pomyœlnie zakoñczonej grze, jak równie¿ umo¿liwia powrót do menu g³ównego.
+/// </remarks>
 public class AfterMission : MonoBehaviour
 {
-    public String mainMenuScene; // pole okreœlaj¹ce nazwê sceny z menu g³ównym
+    public String mainMenuScene; ///< Nazwa sceny z menu g³ównym, do której mo¿na powróciæ.
 
-    public static bool GameIsPaused = false; // flaga okreœlaj¹ca czy gra jest zapauzowana
+    public static bool GameIsPaused = false; ///< Flaga okreœlaj¹ca, czy gra jest zapauzowana.
 
-    public GameObject afterSuccessfulMissionUI; // schowany obiekt z interfejsem Menu, który jest pokazywany po wygranym poziomie
+    public GameObject afterSuccessfulMissionUI; ///< Obiekt interfejsu u¿ytkownika, który pojawia siê po wygranej grze.
 
-    // metoda pauzuj¹ca grê i w³¹czaj¹ca panel wygranej
+
+    /// <summary>
+    /// Pauzuje grê i aktywuje panel z informacj¹ o zakoñczeniu poziomu.
+    /// </summary>
     public void FinishLevel()
     {
         afterSuccessfulMissionUI.SetActive(true);
@@ -26,7 +36,9 @@ public class AfterMission : MonoBehaviour
         Cursor.lockState = CursorLockMode.None;
     }
 
-    // metoda wychodz¹ca z gry do Menu g³ównego
+    /// <summary>
+    /// Realizuje powrót do menu g³ównego gry.
+    /// </summary>
     public void GoBackToMenu()
     {
         Time.timeScale = 1f;

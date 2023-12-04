@@ -2,6 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// Klasa odpowiedzialna za efekt wiatru wp³ywaj¹cy na gracza.
+/// </summary>
 public class WindAffectedObject : MonoBehaviour
 {
     ///Flaga okreœlaj¹ca, czy obiekt znajduje siê wewn¹trz wietrznej strefy

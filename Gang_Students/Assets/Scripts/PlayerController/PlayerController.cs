@@ -1,39 +1,43 @@
 ﻿using System.Collections;
 using UnityEngine;
 
+/// <summary>
+/// Zarządza kontrolą nad postacią gracza, w tym ruchem, skakaniem, interakcją z otoczeniem i animacjami.
+/// </summary>
+/// <remarks>
+/// Klasa PlayerController umożliwia kontrolowanie postaci gracza w środowisku 3D. Obejmuje obsługę
+/// ruchu na ziemi i w powietrzu, skakania, wspinaczki.
+/// </remarks>
 public class PlayerController : MonoBehaviour
-{    
+{
     [SerializeField]
-    private Camera mainCamera;
-    
+    private Camera mainCamera; ///< Główna kamera śledząca gracza.
+
     [SerializeField]
-    private Animator animatorPlayer;
-    
+    private Animator animatorPlayer; ///< Animator zarządzający animacjami postaci gracza.
+
     [SerializeField]
-    private GameObject ragdollPlayer;
-    
+    private GameObject ragdollPlayer; ///< Obiekt ragdoll reprezentujący postać gracza.
+
     [SerializeField]
-    private ConfigurableJoint[] ragdollParts;
-    
+    private ConfigurableJoint[] ragdollParts; ///< Części ciała ragdoll gracza.
+
     [SerializeField]
-    public HandController HandControllerRight, HandControllerLeft;
-    
+    public HandController HandControllerRight, HandControllerLeft; ///< Kontrolery dla prawej i lewej ręki gracza.
+
     [SerializeField]
-    public bool useControls = true;
-    
+    public bool useControls = true; ///< Określa, czy kontroler gracza jest aktywny.
+
     [SerializeField]
-    public string ragdollLayer = "Player", forwardBackAxis = "Vertical", 
-    leftRightAxis = "Horizontal", jump = "Jump", 
-    reachLeft = "Fire1", reachRight = "Fire2";
-    
+    public string ragdollLayer = "Player", forwardBackAxis = "Vertical", leftRightAxis = "Horizontal", jump = "Jump", reachLeft = "Fire1", reachRight = "Fire2"; ///< Parametry kontrolera i akcji.
+
     [SerializeField]
-    private float moveSpeed = 6f, turnSpeed = 6f, 
-    jumpForce = 6f, HeightCheck = 1.1f;
-    
+    private float moveSpeed = 6f, turnSpeed = 6f, jumpForce = 6f, HeightCheck = 1.1f; ///< Parametry ruchu gracza.
+
     [SerializeField]
-    private LayerMask ignoreGroundCheckOn;
-    
-    
+    private LayerMask ignoreGroundCheckOn; ///< Warstwy ignorowane przy sprawdzaniu kolizji z ziemią.
+
+
     private float timer, cachedMoveSpeed, mouseYaxis = 0.5f;
     private bool jumping, isJumping, jumpAxisUsed, inAir, climbing, ragdollMode, cooledDown = true;
     private Vector3 Direction, climbToPositionForward, climbToPositionUp;
@@ -44,8 +48,10 @@ public class PlayerController : MonoBehaviour
     private ConfigurableJoint physicsJoint;
     
     private JointDrive DriveOff, DriveLow, DriveMedium, DriveHigh, DriveOnController, DriveOnRagdoll;
-    
-    //---Setup
+
+    /// <summary>
+    /// Inicjalizuje zmienne i ustawienia początkowe dla postaci gracza.
+    /// </summary>
     void Awake()
     {
         cachedMoveSpeed = moveSpeed;
@@ -89,8 +95,10 @@ public class PlayerController : MonoBehaviour
         }
 
     }
-    
-    //---Updates
+
+    /// <summary>
+    /// Wykonuje aktualizacje co klatkę, zarządzając ruchem gracza, skakaniem i animacjami.
+    /// </summary>
     void Update()
     {
         PlayerGrounded();
@@ -122,8 +130,10 @@ public class PlayerController : MonoBehaviour
             PlayerAnimations();
         }
     }
-    
-    //---Fixed Updates
+
+    /// <summary>
+    /// Wykonuje aktualizacje co klatkę fizyki, zarządzając ruchem gracza podczas wspinaczki.
+    /// </summary>
     void FixedUpdate()
     {
         if(useControls)
@@ -133,14 +143,16 @@ public class PlayerController : MonoBehaviour
         
         PlayerClimbMovement();
     }
-    
-    
-    
+
+
+
     //-----------------------------------------------------------------------------------------------
-    
-    
-    
-    //---Player Grounded
+
+
+
+    /// <summary>
+    /// Sprawdza, czy gracz jest na ziemi i zarządza przełączaniem między trybami ragdoll i kontrolowanym ruchem.
+    /// </summary>
     void PlayerGrounded()
     {
         Ray ray = new Ray (ragdollPlayer.transform.position, -Vector3.up);
@@ -185,10 +197,12 @@ public class PlayerController : MonoBehaviour
             ActivateRagdoll();
 		}
     }
-    
-    
-    
-    //---Player Get Up
+
+
+
+    /// <summary>
+    /// Pomaga graczowi wstawać z trybu ragdoll.
+    /// </summary>
     public void PlayerGetUp()
     {
         //Slowly transition from ragdoll to active ragdoll
@@ -260,10 +274,12 @@ public class PlayerController : MonoBehaviour
             }
         }
     }
-    
-    
-    
-    //---Player Input
+
+
+
+    /// <summary>
+    /// Przetwarza wejścia od gracza, takie jak ruch czy akcje.
+    /// </summary>
     void PlayerInput()
     {
         if(Input.GetAxisRaw(forwardBackAxis) > 0)
@@ -330,26 +346,32 @@ public class PlayerController : MonoBehaviour
             }
         }
     }
-    
-    
-    
-    //---Player Movement
+
+
+
+    /// <summary>
+    /// Zarządza ruchem postaci gracza na ziemi.
+    /// </summary>
     void PlayerMovement()
     {
         Direction = ragdollPlayer.transform.rotation * new Vector3(Input.GetAxisRaw(leftRightAxis), 0.0f, Input.GetAxisRaw(forwardBackAxis));
         Direction.y = 0f;
         physicsBody.velocity = Vector3.Lerp(physicsBody.velocity, (Direction * moveSpeed) + new Vector3(0, physicsBody.velocity.y, 0), 0.8f);
     }
-    
-    //---Player Movement Air
+
+    /// <summary>
+    /// Zarządza ruchem postaci gracza w powietrzu.
+    /// </summary>
     void PlayerMovementAir()
     {
         Direction = ragdollPlayer.transform.rotation * new Vector3(Input.GetAxisRaw(leftRightAxis), 0.0f, Input.GetAxisRaw(forwardBackAxis));
         Direction.y = 0f;
         physicsBody.AddForce(Direction * (moveSpeed * 50));
     }
-    
-    //---Player Climb Movement
+
+    /// <summary>
+    /// Zarządza ruchem gracza podczas wspinaczki.
+    /// </summary>
     void PlayerClimbMovement()
     {
         
@@ -435,8 +457,10 @@ public class PlayerController : MonoBehaviour
             }
         }
     }
-    
-    //---Player Speed
+
+    /// <summary>
+    /// Dostosowuje prędkość ruchu postaci w zależności od kierunku ruchu.
+    /// </summary>
     void PlayerSpeed()
     {
         //walk forward speed
@@ -457,10 +481,12 @@ public class PlayerController : MonoBehaviour
             moveSpeed = cachedMoveSpeed / 1.7f;
         }
     }
-    
-    
-    
-    //---Player Rotation
+
+
+
+    /// <summary>
+    /// Zarządza obrotem postaci gracza, aby odpowiadał kierunkowi ruchu.
+    /// </summary>
     void PlayerRotation()
     {
         var lookPos = mainCamera.transform.forward;
@@ -468,10 +494,12 @@ public class PlayerController : MonoBehaviour
         var rotation = Quaternion.LookRotation(lookPos);
         physicsJoint.targetRotation = Quaternion.Slerp(physicsJoint.targetRotation, Quaternion.Inverse(rotation), Time.deltaTime * turnSpeed);
     }
-    
-    
-    
-    //---Player Jump
+
+
+
+    /// <summary>
+    /// Zarządza skakaniem postaci gracza.
+    /// </summary>
     void PlayerJump()
     {
         if(Input.GetAxis(jump) > 0)
@@ -508,10 +536,12 @@ public class PlayerController : MonoBehaviour
             jumpAxisUsed = false;
         }
     }
-    
-    
-    
-    //---Player Jumping
+
+
+
+    /// <summary>
+    /// Zarządza logiką skakania postaci w kontekście fizyki.
+    /// </summary>
     void PlayerJumping()
     {
         if(jumping && !inAir)
@@ -550,10 +580,12 @@ public class PlayerController : MonoBehaviour
 			}
 		}
     }
-    
-    
-    
-    //---Player Animations
+
+
+
+    /// <summary>
+    /// Zarządza animacjami postaci gracza w zależności od jej ruchów i akcji.
+    /// </summary>
     void PlayerAnimations()
     {   
         if(useControls && !ragdollMode)
@@ -665,8 +697,13 @@ public class PlayerController : MonoBehaviour
             animatorPlayer.Play("Climb");
         }
     }
-    
-    //Keep track of playing animations
+
+    /// <summary>
+    /// Sprawdza, czy określona animacja jest obecnie odtwarzana.
+    /// </summary>
+    /// <param name="anim">Animator, który jest sprawdzany.</param>
+    /// <param name="stateName">Nazwa stanu animacji.</param>
+    /// <returns>Prawda, jeśli animacja jest odtwarzana.</returns>
     bool isPlaying(Animator anim, string stateName)
     {
         if (anim.GetCurrentAnimatorStateInfo(animLayer).IsName(stateName) && anim.GetCurrentAnimatorStateInfo(animLayer).normalizedTime < 1.0f)
@@ -679,8 +716,10 @@ public class PlayerController : MonoBehaviour
             return false;
         }
     }
-    
-    //---KnockDown
+
+    /// <summary>
+    /// Aktywuje tryb ragdoll dla postaci.
+    /// </summary>
     public void KnockDown()
     {
         physicsJoint.slerpDrive = DriveOff;
@@ -690,8 +729,10 @@ public class PlayerController : MonoBehaviour
         inAir = true;
         cooledDown = false;
     }
-    
-    //---Activate Ragdoll
+
+    /// <summary>
+    /// Aktywuje tryb ragdoll dla postaci.
+    /// </summary>
     void ActivateRagdoll()
     {
         foreach (ConfigurableJoint part in ragdollParts)
@@ -699,8 +740,10 @@ public class PlayerController : MonoBehaviour
            part.slerpDrive = DriveOff;  
         }
     }
-    
-    //---Deactivate Ragdoll
+
+    /// <summary>
+    /// Dezaktywuje tryb ragdoll dla postaci.
+    /// </summary>
     void DeactivateRagdoll()
     {
         foreach (ConfigurableJoint part in ragdollParts)

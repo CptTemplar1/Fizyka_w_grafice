@@ -3,14 +3,21 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
+/// <summary>
+/// Zarz¹dza odliczaniem czasu, na przyk³ad po zakoñczeniu poziomu w grze.
+/// </summary>
+/// <remarks>
+/// Klasa TimeCounter odpowiada za odliczanie czasu, które mo¿e byæ u¿yte do ró¿nych celów w grze,
+/// takich jak czas oczekiwania po zakoñczeniu poziomu.
+/// </remarks>
 public class TimeCounter : MonoBehaviour
 {
-    private AfterMission afterMission; //skrypt AfterMission obs³uguj¹cy zachowanie okna po zakoñczeniu gry
+    private AfterMission afterMission; ///< Skrypt AfterMission obs³uguj¹cy zachowanie okna po zakoñczeniu gry.
 
-    float time = 5; //czas do odliczania po np zakonczeniu lvla
-    bool startPassedLevelCounter = false;
-    private GameObject counter;
-    private TMP_Text timeCounterText;
+    float time = 5; ///< Czas do odliczania, np. po zakoñczeniu poziomu.
+    bool startPassedLevelCounter = false; ///< Flaga okreœlaj¹ca, czy odliczanie zosta³o rozpoczête.
+    private GameObject counter; ///< Obiekt interfejsu u¿ytkownika dla wyœwietlania czasu.
+    private TMP_Text timeCounterText; ///< Komponent tekstowy wyœwietlaj¹cy odliczanie czasu.
 
     private void Start()
     {
@@ -19,6 +26,9 @@ public class TimeCounter : MonoBehaviour
         timeCounterText = counter.GetComponent<TMP_Text>();
     }
 
+    /// <summary>
+    /// Update jest wywo³ywany co klatkê gry, zarz¹dza odliczaniem czasu.
+    /// </summary>
     void Update()
     {
         //odliczanie po wygranym poziomie
