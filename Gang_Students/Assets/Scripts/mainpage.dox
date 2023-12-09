@@ -1,0 +1,15 @@
+/** \mainpage Strona glowna dokumentacji Gry z przedmiotu Fizyka w animacji i grafice komputerowej
+ * Temat projektu: "Gra wykorzystująca elementy fizyki o nazwie GangStudents"<br><br>
+ *
+ * Krotki opis projektu: <br>
+ * Celem projektu było utworzenie programu wykorzystującego elementy fizyki w grafice komputerowej. Zdecydowaliśmy się na stworzenie gry przy pomocy silnika Unity. <br>
+ * Głównym elementem rozgrywki jest sterowanie postacią (Ragdollem), na którego oddziałuje otoczenie. Gra była wzorowana na takich produkcjach jak Human Fall Flat czy Gang Beasts <br>
+ * skąd zaczerpnięto pomysł poruszania się postaci. Aby wygrać, gracz musi pokonać wszystkie przeszkody na mapie i dotrzeć do mety. Każda z przeszkód przedstawia inny aspekt wykorzystanej fizyki, np. <br>
+ * spychający gracza wiatr, zjazd na tyrolce czy skok do basenu z żelkami. <br><br>
+ * Autorzy projektu:<br>
+ * -Przemyslaw Kaluzinski (91271) <br>
+ * -Dawid Chruślak (91243) <br>
+ * -Michal Kaczor (91268) <br><br>
+ *
+ * Grupa: 4ID13A
+ */
